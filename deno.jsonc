@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+     // required for Deno 1.40+ until SQLa/lib/notebook is upgraded to support TC39 decorators
+    "experimentalDecorators": true
+  },
+  "tasks": {
+    "doctor": "deno run -A ./support/bin/doctor.ts",
+    "audit": "deno run ./src/qe-sow-audit.tap.ts && deno run ./src/quality-system-audit.tap.ts",
+    "generate-compliance-qs-doc": "deno run -A ./src/quality-system-audit.tap.ts --html > ./support/docs/compliance-auto/quality-system-audit.tap.html && deno run -A ./src/quality-system-audit.tap.ts --md > ./support/docs/compliance-auto/quality-system-audit.tap.md && deno run -A ./src/quality-system-audit.tap.ts --json > ./support/docs/compliance-auto/quality-system-audit.tap.json",
+    "generate-compliance-sow-doc": "deno run -A ./src/qe-sow-audit.tap.ts --html > ./support/docs/compliance-auto/qe-sow-audit.tap.html && deno run -A ./src/qe-sow-audit.tap.ts --md > ./support/docs/compliance-auto/qe-sow-audit.tap.md && deno run -A ./src/qe-sow-audit.tap.ts --json > ./support/docs/compliance-auto/qe-sow-audit.tap.json",
+    "generate-docs": "deno task generate-compliance-qs-doc && deno task generate-compliance-sow-doc"
+  }
+}
